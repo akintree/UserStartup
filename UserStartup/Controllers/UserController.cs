@@ -28,28 +28,29 @@ namespace UserStartup.Controllers
         {           
             if (ModelState.IsValid)
             {
+                List<User> userList = AddUserViewModel.UserList;
                 User newUser = new User
                 {
                     Username = user.Username,
                     Email = user.Email,
                     Password = user.Password
                 };
-                if (newUser.Password is null)
+                if (newUser.Password == null)
                 {
                     ViewBag.error = "Please enter a password";
-                    throw ViewBag.error;
+                    return View();
                 } else
                 {
                     if (verify != newUser.Password)
                     {
                         ViewBag.error = "Passwords need to match";
-                        throw ViewBag.error;
+                        return View();
                     };
-                    AddUserViewModel.UserList.Add(newUser);
+                    userList.Add(newUser);
                     return Redirect("/User");
                 }
             }
-            return View(user);
+           return View(user);
         }
     }
 }
