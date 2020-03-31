@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Add User";
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<!--TODO: make form-->
+<form asp-controller="User" asp-action="Add" class="form-control" method="post">
+    <div class="form-group">
+        <label name="Username">Username</label>
+        <input type="text" name="Username" />
+    </div>
+    <div class="form-group">
+        <label name="Email">Email</label>
+        <input type="email" name="Email" />
+    </div>
+    <div class="form-group">
+        <label name="Password">Password</label>
+        <input type="password" name="Password" />
+    </div>
+    <div>
+        <label name="verify=">Verify Password</label>
+        <input type="password" name="verify" />
+    </div>
+    <input type="submit" value="Add User">
+</form>
