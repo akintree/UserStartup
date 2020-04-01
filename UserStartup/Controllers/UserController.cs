@@ -12,8 +12,8 @@ namespace UserStartup.Controllers
     {
         public IActionResult Index()   
         {
-            List<User> users = AddUserViewModel.UserList;
-            return View(users);
+            List<User> user = AddUserViewModel.UserList;
+            return View(user);
         }
         
         public IActionResult Add()
@@ -21,14 +21,13 @@ namespace UserStartup.Controllers
             User user = new User();
             ViewBag.Title = "Add User";
             AddUserViewModel addUserViewModel = new AddUserViewModel();
-            return View(user);
+            return View(addUserViewModel);
         }
         [HttpPost]
         public IActionResult Add(User user, string verify)
         {           
             if (ModelState.IsValid)
             {
-                List<User> userList = AddUserViewModel.UserList;
                 User newUser = new User
                 {
                     Username = user.Username,
@@ -46,11 +45,11 @@ namespace UserStartup.Controllers
                         ViewBag.error = "Passwords need to match";
                         return View();
                     };
-                    userList.Add(newUser);
+                    AddUserViewModel.UserList.Add(newUser);
                     return Redirect("/User");
                 }
             }
-           return View(user);
+            return View(user);
         }
     }
 }

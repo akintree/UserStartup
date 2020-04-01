@@ -16,12 +16,13 @@ namespace UserStartup.ViewModels
         public string Password { get; set; }
 
         public string VerifyPassword { get; set; }
-        
-        public static List<User> UserList  { get; set; }
+
+        public static List<User> UserList { get; set; } = new List<User>();
 
         //public void AddUser(User newUser)
         //{
         //    UserList.Add(newUser);
         //}
+
     }
 }

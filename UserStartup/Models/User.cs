@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UserStartup.ViewModels;
 
 namespace UserStartup.Models
 {
@@ -16,6 +17,7 @@ namespace UserStartup.Models
         public User(){
             
             }
+
 
     }
 }

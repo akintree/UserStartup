@@ -4,4 +4,7 @@
 }
 
 <h1>Index</h1>
-
+    @foreach(var User in Model)
+     {
+        <p><b>User:</b> @User.Username</p>
+     }
