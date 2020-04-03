@@ -18,38 +18,26 @@ namespace UserStartup.Controllers
         
         public IActionResult Add()
         {
-            User user = new User();
+            //User user = new User();
             ViewBag.Title = "Add User";
             AddUserViewModel addUserViewModel = new AddUserViewModel();
             return View(addUserViewModel);
         }
         [HttpPost]
-        public IActionResult Add(User user, string verify)
+        public IActionResult Add(AddUserViewModel addUserViewModel)
         {           
             if (ModelState.IsValid)
             {
                 User newUser = new User
                 {
-                    Username = user.Username,
-                    Email = user.Email,
-                    Password = user.Password
-                };
-                if (newUser.Password == null)
-                {
-                    ViewBag.error = "Please enter a password";
-                    return View();
-                } else
-                {
-                    if (verify != newUser.Password)
-                    {
-                        ViewBag.error = "Passwords need to match";
-                        return View();
-                    };
+                    Username = addUserViewModel.Username,
+                    Email = addUserViewModel.Email,
+                    Password = addUserViewModel.Password
+                };             
                     AddUserViewModel.UserList.Add(newUser);
-                    return Redirect("/User");
-                }
+                    return Redirect("/User");  
             }
-            return View(user);
+            return View(addUserViewModel);
         }
     }
 }

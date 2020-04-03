@@ -1,5 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Add User";
+    @using UserStartup.ViewModels;
+    @model AddUserViewModel;
 }
 
 
@@ -8,22 +10,25 @@
 <!--TODO: make form-->
 <form asp-controller="User" asp-action="Add" class="form-control" method="post">
     <div class="form-group">
-        <label name="Username">Username</label>
-        <input type="text" name="Username" />
+        <label name="Username" asp-for="Username">Username</label>
+        <input type="text" asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username"></span>
     </div>
     <div class="form-group">
-        <label name="Email">Email</label>
-        <input type="email" name="Email" />
+        <label name="Email" asp-for="Email">Email</label>
+        <input type="email" asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
     </div>
     <div class="form-group">
-        <label name="Password">Password</label>
-        <input type="password" name="Password" />
+        <label name="Password" asp-for="Password">Password</label>
+        <input type="password" asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label name="verify">Verify Password</label>
-        <input type="password" name="verify" />
+        <label name="verify" asp-for="verify">Verify Password</label>
+        <input type="password" asp-for="verify" class="form-control" />
+        <span asp-validation-for="verify"></span>
     </div>
     <input type="submit" value="Add User">
 </form>
 
-<p>@ViewBag.error</p>
